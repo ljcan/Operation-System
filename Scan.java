@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Random;
 /**
- * ´ÅÅÌµ÷¶ÈËã·¨£¬SCANËã·¨
+ * ç£ç›˜è°ƒåº¦ç®—æ³•ï¼ŒSCANç®—æ³•
  * @author shinelon
  *
  */
@@ -21,22 +21,21 @@ public class Scan {
 			System.out.print(list.get(i)+" ");
 		}
 		System.out.println();
-		int location=random.nextInt(200);	//µ±Ç°Ö¸ÕëµÄÎ»ÖÃ
-		System.out.println("µ±Ç°Ö¸ÕëÎ»ÖÃ£º"+location);
-//		int direction=random.nextInt(1);	//0,ÓÉÍâÏòÀï£¬1£ºÓÉÀïÏòÍâ
-		int direction=1;
+		int location=random.nextInt(200);	//å½“å‰æŒ‡é’ˆçš„ä½ç½®
+		System.out.println("å½“å‰æŒ‡é’ˆä½ç½®ï¼š"+location);
+		int direction=random.nextInt(2);	//0,ç”±å¤–å‘é‡Œï¼Œ1ï¼šç”±é‡Œå‘å¤–
 		Collections.sort(list);
 		Iterator<Integer> it=list.iterator();
 		int size=0;
 		int sum=0;
-		if(direction==1){ 		//ÓÉÀïÏòÍâ	
+		if(direction==1){ 		//ç”±é‡Œå‘å¤–å¯»å€	
+			System.out.println("å¯»å€æ–¹å‘ä¸ºï¼šç”±é‡Œå‘å¤–");
 		 while(it.hasNext()){
 			 int n=it.next();
 			 if(location<n){
 				 int next=n;
-				 sum+=next-location;
+				 sum+=Math.abs(next-location);
 				 location=next;
-//				 it.remove();
 				 list.set(size, 0);
 			 }
 			 size++;
@@ -44,14 +43,40 @@ public class Scan {
 		 if(!list.isEmpty()){
 			 for(int i=list.size()-1;i>=0;i--){
 				if(list.get(i)!=0){
-				 sum+=location-list.get(i);
+				 sum+=Math.abs(location-list.get(i));
 				 location=list.get(i);
 				 }
 			 }
 		 }
-		 System.out.println("×ÜµÄÑ°Ö·³¤¶ÈÎª£º"+sum);
-		 System.out.println("Æ½¾ùÑ°Ö·³¤¶ÈÎª£º"+(double)(sum/SIZE));
+		 System.out.println("æ€»çš„å¯»å€é•¿åº¦ä¸ºï¼š"+sum);
+		 System.out.println("å¹³å‡å¯»å€é•¿åº¦ä¸ºï¼š"+(double)(sum/SIZE));
 		}
-		
+		if(direction==0){		//ç”±é‡Œå‘å¤–å¯»å€
+			System.out.println("å¯»å€æ–¹å‘ä¸ºï¼šç”±å¤–å‘é‡Œ");
+			while(it.hasNext()){
+				int n=it.next();
+				if(location<n){
+					while(size>=0){
+						int next=list.get(size);
+						sum+=Math.abs(location-next);
+						location=next;
+						list.set(size, 0);
+						size--;
+					}
+				}
+				size++;
+			}
+				if(!list.isEmpty()){
+					for(int i=0;i<list.size();i++){
+						if(list.get(i)!=0){
+							sum+=Math.abs(list.get(i)-location);
+							location=list.get(i);
+						}
+					}
+			}
+			 System.out.println("æ€»çš„å¯»å€é•¿åº¦ä¸ºï¼š"+sum);
+			 System.out.println("å¹³å‡å¯»å€é•¿åº¦ä¸ºï¼š"+(double)(sum/SIZE));
+		}
 	}
 }
+
