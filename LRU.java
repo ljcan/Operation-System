@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * ÏÈ½øÏÈ³öÒ³ÃæÖÃ»»Ëã·¨
  * @author shinelon
  *
  */
@@ -22,37 +21,37 @@ public class LRU {
 				list.add(page);
 				count++;
 				if(!list.isEmpty()){
-					System.out.println("µ±Ç°µ÷ÈëÄÚ´æµÄÒ³ÃæÊÇ£º");
+					System.out.println("å½“å‰è°ƒå…¥å†…å­˜çš„é¡µé¢æ˜¯ï¼š");
 					for(int j=0;j<list.size();j++){
 						System.out.print(list.get(j)+" ");
 					}
 					System.out.println();
 				}
-			}else{		//Èç¹ûÄÚ´æÖĞÒÑ¾­µ÷Èë¸ÃÒ³Ãæ½«Æä·ÅÈë¶ÓÎ²
+			}else{		//å¦‚æœå†…å­˜ä¸­å·²ç»è°ƒå…¥è¯¥é¡µé¢å°†å…¶æ”¾å…¥é˜Ÿå°¾
 				list.remove((Integer)page);
 				list.add(page);
 			}
 			}else{
 				if(list.size()>=3){
-					//Èç¹ûĞèÒªµÄÒ³ÃæÒÑ¾­µ÷ÈëÄÚ´æ½«Æä·ÅÈë¶ÓÎ²
+					//å¦‚æœéœ€è¦çš„é¡µé¢å·²ç»è°ƒå…¥å†…å­˜å°†å…¶æ”¾å…¥é˜Ÿå°¾
 					int block=(int) allList.get(i);
 					if(list.contains(block)){
 						list.remove((Integer)block);
 						list.add(block);
 						if(!list.isEmpty()){
-							System.out.println("µ±Ç°µ÷ÈëÄÚ´æµÄÒ³ÃæÊÇ£º");
+							System.out.println("å½“å‰è°ƒå…¥å†…å­˜çš„é¡µé¢æ˜¯ï¼š");
 							for(int j=0;j<list.size();j++){
 								System.out.print(list.get(j)+" ");
 							}
 							System.out.println();
 						}
 					}else{
-						//É¾³ı¶ÓÍ·£¬¼´×î½ü×îÉÙÊ¹ÓÃµÄÒ³Ãæ
+						//åˆ é™¤é˜Ÿå¤´ï¼Œå³æœ€è¿‘æœ€å°‘ä½¿ç”¨çš„é¡µé¢
 						list.remove(0);
 						list.add(block);
 						count++;
 						if(!list.isEmpty()){
-							System.out.println("µ±Ç°µ÷ÈëÄÚ´æµÄÒ³ÃæÊÇ£º");
+							System.out.println("å½“å‰è°ƒå…¥å†…å­˜çš„é¡µé¢æ˜¯ï¼š");
 							for(int j=0;j<list.size();j++){
 								System.out.print(list.get(j)+" ");
 							}
@@ -74,6 +73,6 @@ public class LRU {
 		System.out.println();
 		task();
 		float percent=(float)count/BLOCK_NUM;
-		System.out.println("È±Ò³ÂÊÎª£º"+percent);
+		System.out.println("ç¼ºé¡µç‡ä¸ºï¼š"+percent);
 	}
 }
